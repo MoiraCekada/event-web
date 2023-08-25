@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post Content</title>
+
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .con{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .con form{
+            width: 80%;
+            text-align: center;
+            margin: auto;
+        }
+
+        .con form input{
+            width: 80%;
+            font-size: 14px;
+            padding: 6px;
+            margin: 0.5rem;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .con form textarea{
+            width: 80%;
+            font-size: 14px;
+            padding: 6px;
+            margin: 0.5rem;
+            border: 2px solid black;
+            text-align: center
+        }
+        .con .one{
+            /* border: 2px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            height: max-content;
+        }
+
+        .con .one li{
+            list-style: none;
+        }
+
+        .container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+            & box{
+                width: 80%;
+                margin: auto;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% if user != None %}
+        <div class="con">
+            <form action="/join-event/{{event.sr_number}}" method="post">
+                <input type="text" name="name" id="image" value=""  placeholder="Your Name"><br>
+                <input type="text" name="location" value="" placeholder="Your Location"> <br>
+                <input type="text" name="age" value="" placeholder="Your Age"> <br>
+                <input type="text" name="contact" value="" placeholder="Contact Number"> <br>
+                <input type="submit" value="Join event">
+            </form>
+        </div>
+        
+    {% elif user == None %}
+        <div class="container">
+            <div class="box">
+                <p style="padding: 4px; color: black; font-size: 2em;">Please login first <a href="/login" style="text-decoration: none; color: red; font-size: 0.8em;">Login Now</a></p>
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>

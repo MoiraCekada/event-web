@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post Content</title>
+
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .con{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .con form{
+            width: 80%;
+            text-align: center;
+            margin: auto;
+        }
+
+        .con form input{
+            width: 80%;
+            font-size: 14px;
+            padding: 6px;
+            margin: 0.5rem;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .con form textarea{
+            width: 80%;
+            font-size: 14px;
+            padding: 6px;
+            margin: 0.5rem;
+            border: 2px solid black;
+            text-align: center
+        }
+        .con .one{
+            /* border: 2px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            height: max-content;
+        }
+
+        .con .one li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <form action="/edit/{{event.sr_number}}" method="post">
+            <input type="text" name="name" id="image" value="{{event.name}}"><br>
+            <input type="text" name="location" value="{{event.location}}"> <br>
+            <input type="text" name="date" value="{{event.date}}"> <br>
+            <input type="text" name="time" value="{{event.time}}"> <br>
+            <textarea name="description" id="Content" cols="30" rows="10">{{event.description}}</textarea> <br>
+            <input type="submit" value="Submit Now">
+        </form>
+    </div>
+</body>
+</html>

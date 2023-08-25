@@ -1,0 +1,6 @@
+{
+    "server_details" : {
+        "local_server" : "mysql://root:@localhost/manage_events",
+        "production_server" : "mysql://root:@localhost/manage_events"
+    }
+}
