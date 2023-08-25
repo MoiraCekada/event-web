@@ -1,4 +1,4 @@
-*One Step Beyond*
+*Event planner*
 Projekt iz kolegija Poslovni informacijski sustavi
 
 *Opis projekta*
