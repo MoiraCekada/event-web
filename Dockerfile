@@ -4,26 +4,35 @@ FROM python:3.9-slim
 # Set the working directory in the container
 WORKDIR /app
 
-# Upgrade pip to the latest version
-RUN pip install --no-cache-dir --upgrade pip
-
-# Install system dependencies required for mysqlclient
+# Install required system packages
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y libmariadbclient-dev build-essential
+    apt-get install -y default-libmysqlclient-dev build-essential pkg-config default-mysql-client curl && \
+    apt-get clean
 
-# Copy the application code into the container
-COPY . .
+# Install Rust compiler
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-# Install the Python dependencies from the requirements.txt file
+# Add Rust binaries to PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# Copy the source code into the container
+COPY . /app
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port on which your application will listen
-EXPOSE 5000
+# Set an environment variable to define the MySQL database configuration
+ENV MYSQL_HOST your_mysql_host
+ENV MYSQL_PORT 3306
+ENV MYSQL_USER your_mysql_user
+ENV MYSQL_PASSWORD your_mysql_password
+ENV MYSQL_DB your_mysql_database
 
-# Set environment variables
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+EXPOSE 8080
+
+# Set SQLAlchemy track modifications option
+ENV SQLALCHEMY_TRACK_MODIFICATIONS False
 
 # Start the application
-CMD ["flask", "run"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+
