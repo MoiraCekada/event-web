@@ -25,10 +25,14 @@ Prijavljeni korisnik ima opciju dodavanja novog događaja.
 Otvara se web forma gdje korisnik unosi detalje o događaju (nazi,lokacija,datum,vrijeme,opis).
 Podaci se pohranjuju 
 
-**4.Brisanje događaja (Delete)**
+**4.Uređivanje događaja**
+
+Unutar detaljne stranice događaja, potražite opciju "Uredi" ili "Edit Event". Kliknite na tu opciju kako biste otvorili obrazac za uređivanje.
+
+**5.Brisanje događaja (Delete)**
 Prijavljeni korisnik može odabrati i izbrisati svoje postojeće događaje.
 
-**5.Odjava korisnika**
+**6.Odjava korisnika**
 Prijavljeni korisnik ima opciju odjave s računa nakon korištenja.
 
 *Dodatne funkcionalnosti*
